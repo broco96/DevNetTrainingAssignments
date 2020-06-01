@@ -8,7 +8,9 @@ if __name__=="__main__":
         js=json.load(dat)
     
     for key in js:
+        print('---------------------------------')
         print(key)
+        print()
         print('paid: ',js[key]['paid'])
         print('due: ',js[key]['due'])
         
@@ -16,12 +18,16 @@ if __name__=="__main__":
     root=tree.getroot()
 
     for k in root.iter():
-        print(k.tag+': '+k.text)
+        if 'ACCT' in k.tag:
+            print('---------------------------------')
+        print(k.tag+': '+k.text.strip('/n'))
     
     with open('data/db.yml','r') as dat:
         yl=yaml.safe_load(dat)
 
     for key in yl:
+        print('---------------------------------')
         print(key)
+        print()
         print('paid: ',yl[key]['paid'])
         print('due: ',yl[key]['due'])
